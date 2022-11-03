@@ -6,8 +6,8 @@ phases:
 
   build:
     commands:
-      - docker build -t 707586448451.dkr.ecr.eu-west-2.amazonaws.com/test-static:latest .
+      - docker build -t $REPOSITORY_URI:latest .
 
   post_build:
     commands:
-      - docker push 707586448451.dkr.ecr.eu-west-2.amazonaws.com/test-static:latest
+      - docker push $REPOSITORY_URI:latest
