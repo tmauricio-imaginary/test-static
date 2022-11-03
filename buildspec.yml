@@ -1,0 +1,9 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - docker build -t 707586448451.dkr.ecr.eu-west-2.amazonaws.com/test-static:latest .
+  post_build:
+    commands:
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - docker push 707586448451.dkr.ecr.eu-west-2.amazonaws.com/test-static:latest
